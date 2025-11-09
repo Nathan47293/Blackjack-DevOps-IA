@@ -9,13 +9,13 @@ IMAGE_REPO="ghcr.io/nathan47293/blackjack-devops-ia"
 TAG="${1:-latest}"
 FULL_IMAGE="$IMAGE_REPO:$TAG"
 
-echo "🏗️ Building Docker Image"
+echo "Building Docker Image"
 echo "========================"
 echo "Image: $FULL_IMAGE"
 echo ""
 
 # Build the image
-echo "📦 Building image..."
+echo "Building image..."
 docker build -t $FULL_IMAGE .
 
 # Tag with latest if not already latest
@@ -24,7 +24,7 @@ if [ "$TAG" != "latest" ]; then
 fi
 
 # Push to registry
-echo "🚀 Pushing to registry..."
+echo "Pushing to registry..."
 docker push $FULL_IMAGE
 
 if [ "$TAG" != "latest" ]; then
@@ -32,5 +32,5 @@ if [ "$TAG" != "latest" ]; then
 fi
 
 echo ""
-echo "✅ Build and push completed successfully!"
+echo "Build and push completed successfully!"
 echo "Image: $FULL_IMAGE"
