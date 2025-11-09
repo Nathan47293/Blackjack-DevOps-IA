@@ -1,59 +1,111 @@
-# Simple Blackjack Game
+# Blackjack DevOps Project
 
-A lightweight implementation of Blackjack using FastAPI backend and vanilla JavaScript frontend.
+A Blackjack game built with FastAPI, demonstrating DevOps practices including containerization, orchestration, CI/CD, and infrastructure as code.
+
+## Project Overview
+
+This project implements a web-based Blackjack game with a complete DevOps pipeline:
+- Docker containerization
+- Kubernetes deployment configurations
+- CI/CD with GitHub Actions
+- Infrastructure as Code using Terraform
+- Automated testing
+- Cloud deployment ready (Azure)
 
 ## Features
-- RESTful API for game actions
-- Complex game state management with dealer AI
-- Real-time score calculation with special Ace handling
-- Simple betting system
-- Responsive web interface
 
-## Setup Instructions
+### Game Features
+- Place bets and play Blackjack
+- Dealer AI that follows standard rules
+- Ace value handling (1 or 11)
+- Simple web interface
 
-1. Prerequisites
-   - Python 3.8 or higher
-   - pip (Python package manager)
+### DevOps Implementation
+- **Docker**: Containerized application with multi-stage builds
+- **Kubernetes**: Deployment manifests with autoscaling
+- **CI/CD**: GitHub Actions for automated testing and deployment
+- **IaC**: Terraform configurations for Azure infrastructure
+- **Testing**: Unit tests with pytest and coverage reporting
 
-2. Installation
-   ```bash
-   # Clone the repository
-   git clone [your-repo-url]
-   cd [repository-name]
+## 📁 Project Structure
 
-   # Install dependencies
-   pip install -r requirements.txt
-   ```
+```
+├── main.py                 # FastAPI application
+├── requirements.txt        # Python dependencies
+├── Dockerfile             # Container definition
+├── docker-compose.yml     # Local development environment
+├── static/                # Frontend assets
+│   ├── css/
+│   └── js/
+├── templates/             # HTML templates
+├── tests/                 # Test suite
+├── .github/workflows/     # CI/CD pipeline
+├── k8s/                   # Kubernetes manifests
+├── terraform/             # Infrastructure as Code
+└── scripts/               # Deployment automation
+```
 
-3. Running the Application
-   ```bash
-   # Start the server
-   python main.py
-   ```
+## Quick Start
 
-4. Access the Game
-   - Open your web browser
-   - Navigate to http://localhost:8000
-   - Start playing!
+### Run Locally
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-## Game Rules
-- Initial balance: $100 (resets on page refresh)
-- Place your bet before each round
-- Dealer must hit on 16 or below, stand on 17 or above
-- Blackjack pays 2:1
-- Push (tie) returns your bet
+# Run the application
+python main.py
+```
+Access at: http://localhost:8000
 
-## Tech Stack
-- Backend: Python + FastAPI
-- Frontend: HTML5, CSS3, JavaScript
-- Template Engine: Jinja2
+### Run with Docker
+```bash
+docker-compose up --build
+```
+Access at: http://localhost:80
+
+## Testing
+
+```bash
+# Run tests
+pytest tests/ -v
+
+# Run with coverage
+pytest tests/ --cov=. --cov-report=html
+```
+
+## Deployment
+
+### Kubernetes
+```bash
+kubectl apply -f k8s/
+```
+
+### Infrastructure (Terraform)
+```bash
+cd terraform
+terraform init
+terraform plan
+terraform apply
+```
 
 ## Project Structure
 ```
-├── main.py           # FastAPI application and game logic
-├── requirements.txt  # Python dependencies
-├── static/          # Static assets
-│   ├── css/        # Stylesheets
-│   └── js/         # JavaScript files
-└── templates/       # HTML templates
+├── main.py              # FastAPI application
+├── requirements.txt     # Python dependencies
+├── Dockerfile          # Container configuration
+├── docker-compose.yml  # Local dev environment
+├── tests/              # Test suite
+├── k8s/                # Kubernetes manifests
+├── terraform/          # Infrastructure as Code
+└── .github/workflows/  # CI/CD pipeline
 ```
+
+## Tech Stack
+- **Backend**: Python, FastAPI
+- **Frontend**: HTML, CSS, JavaScript
+- **DevOps**: Docker, Kubernetes, GitHub Actions, Terraform
+- **Cloud**: Azure (AKS, ACR)
+- **Testing**: pytest
+
+---
+**DevOps Assignment - 3rd Year Computer Science**

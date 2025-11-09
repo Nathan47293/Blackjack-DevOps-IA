@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blackjack-app
+  labels:
+    app: blackjack
+    tier: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blackjack
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: blackjack
+        tier: web
+    spec:
+      containers:
+      - name: blackjack
+        image: ghcr.io/nathan47293/blackjack-devops-ia:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      imagePullPolicy: Always
+      restartPolicy: Always
