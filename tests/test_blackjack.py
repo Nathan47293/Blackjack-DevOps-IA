@@ -5,8 +5,7 @@ from main import app, Game, Card, Deck, calculate_score
 
 @pytest.fixture
 def client():
-    with TestClient(app) as c:
-        yield c
+    return TestClient(app)
 
 class TestCard:
     def test_card_creation(self):
